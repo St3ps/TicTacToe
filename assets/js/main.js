@@ -1,16 +1,22 @@
 
 var clicked = false;
 var count = 0;
+
+game_manager.selectMenu();
+
+
 var ttt = function gameloop() {
 
     if(game_manager.board.getBlank().length === 0) {
         console.log("ITS A DRAW!")
-        game_manager.endGame();
+        game_manager.endGame("Draw!");
     }
 
-    if(!game_manager.gameIsOver) {
+
 
         $('.cell').click(function () {
+
+            if(!game_manager.gameIsOver) {
 
             console.log("TURN:", count);
 
@@ -27,7 +33,7 @@ var ttt = function gameloop() {
 
                     if (game_manager.victoryCheck(game_manager.board, game_manager.currentPlayer)) {
                         console.log("GAME OVER, HUMAN WINS")
-                        game_manager.endGame();
+                        game_manager.endGame("You won!");
                     }
 
                     game_manager.changePlayer();
@@ -38,13 +44,14 @@ var ttt = function gameloop() {
             }
 
 
-        })
+        }});
 
-    }
+
 
     if(!game_manager.gameIsOver) {
-
+        console.log("first if");
         if(!game_manager.currentPlayer.human) {
+            console.log("AI is playing");
 
             var m = game_manager.currentPlayer.getAiMove(game_manager.board, game_manager, game_manager.humanPlayer);
 
@@ -52,7 +59,7 @@ var ttt = function gameloop() {
 
             if(game_manager.victoryCheck(game_manager.board, game_manager.currentPlayer)) {
                 console.log("GAME OVER, AI WINS")
-                game_manager.endGame();
+                game_manager.endGame("AI Wins!");
             }
 
             game_manager.changePlayer();

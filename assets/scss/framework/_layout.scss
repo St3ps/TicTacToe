@@ -1,0 +1,177 @@
+
+
+
+/***MEDIA QUERY**/
+
+@media screen and #{$mobile} {
+
+
+  .tictactoe .col-md-4 {
+
+    @include size($cell-size-m);
+
+
+
+
+
+  }
+
+
+
+  .second-container {
+
+    width: $cell-size-m * 3 + 30px;
+
+  }
+
+  .select-menu {
+
+    width: $cell-size-m * 3 + 30px;
+    margin-bottom: $select-menu-margin-bottom-m;
+  }
+
+}
+
+@media #{$desktop} {
+
+
+  .second-container {
+
+    //    width: $cell-size-d * 3 + 30px;
+    width: $cell-size-d * 3 + 30px;
+
+  }
+
+
+
+
+  .tictactoe .col-md-4 {
+
+    @include size($cell-size-d)
+
+  }
+
+
+
+  .select-menu {
+
+    width: $cell-size-d * 3 + 30px;
+    margin-bottom: $select-menu-margin-bottom-d;
+  }
+
+
+}
+
+
+/*****/
+
+.select-menu {
+
+
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: darkorange;
+
+  .col-md-6, .col-md-12 {
+
+    background-color: #eee;
+
+
+  }
+
+
+}
+
+a {
+
+
+  &:hover {
+
+    text-decoration: none;
+
+  }
+}
+
+
+.tictactoe {
+
+
+  margin-left: auto;
+  margin-right: auto;
+
+
+  .col-md-4 {
+
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+
+
+    &[x='0'][y='0'] {
+
+      border-width: 0px 2px 2px 0px;
+
+    }
+
+    &[x='1'][y='0'] {
+
+      border-width: 0px 2px 2px 2px;
+
+    }
+
+    &[x='2'][y='0'] {
+
+      border-width: 0px 0px 2px 2px;
+
+    }
+
+    &[x='0'][y='1'] {
+
+      border-width: 2px 2px 2px 0px;
+
+    }
+
+    &[x='1'][y='1'] {
+
+      border-width: 2px;
+
+    }
+
+    &[x='2'][y='1'] {
+
+      border-width: 2px 0px 2px 2px;
+
+    }
+
+    &[x='0'][y='2'] {
+
+      border-width: 2px 2px 0px 0px;
+
+    }
+
+    &[x='1'][y='2'] {
+
+      border-width: 2px 2px 0px 2px;
+
+    }
+
+    &[x='2'][y='2'] {
+
+      border-width: 2px 0px 0px 2px;
+
+    }
+
+
+
+  }
+
+
+}
+body {
+
+  padding-top: 100px;
+
+}

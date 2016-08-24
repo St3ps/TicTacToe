@@ -13,16 +13,18 @@ var GameManager = function() {
     this.board = new Board();
 
     this.currentPlayer = "";
-    this.humanPlayer = new Player('X', true);
-
-    if (this.humanPlayer.identity === 'X') {
-        this.currentPlayer = this.humanPlayer;
-        this.aiPlayer = new Player('O', false);
-    }
-    else {
-        this.aiPlayer = new Player('X', false);
-        this.currentPlayer = this.aiPlayer;
-    }
+    this.humanPlayer = "";
+    this.aiPlayer = "";
+    //this.humanPlayer = new Player(playerIdentity, true);
+    //
+    //if (this.humanPlayer.identity === 'X') {
+    //    this.currentPlayer = this.humanPlayer;
+    //    this.aiPlayer = new Player('O', false);
+    //}
+    //else {
+    //    this.aiPlayer = new Player('X', false);
+    //    this.currentPlayer = this.aiPlayer;
+    //}
 
     this.gameIsPlaying = false;
     this.gameIsOver = false;
@@ -41,10 +43,43 @@ GameManager.prototype = {
 
             },
 
-    endGame: function() {
+    setPlayers: function (playerIdentity) {
+
+        this.humanPlayer = new Player(playerIdentity, true);
+
+
+        if (this.humanPlayer.identity === 'X') {
+            this.currentPlayer = this.humanPlayer;
+            this.aiPlayer = new Player('O', false);
+        }
+
+        if (this.humanPlayer.identity === 'O') {
+
+            this.aiPlayer = new Player('X', false);
+            this.currentPlayer = this.aiPlayer;
+        }
+
+    },
+
+    endGame: function(outcome) {
+
+        var self = this;
 
         this.gameIsOver = true;
         this.gameIsPlaying = false;
+
+        $('.select-menu').html('<div class="col-md-12"><h1>' + outcome + '</h1></div><div class="col-md-12"><a href="#" role="button" id="Play"><h1>Play Again?</h1></a></div>')
+        $('.select-menu').css("visibility", "visible");
+
+        $('#Play').click( function (){
+
+            console.log("hiplay");
+            self.board.clear();
+            self.selectMenu();
+
+        })
+
+
 
     },
 
@@ -89,9 +124,69 @@ GameManager.prototype = {
         this.currentPlayer = this.aiPlayer;
         else
         this.currentPlayer = this.humanPlayer;
-        console.log(this.currentPlayer);
+        //console.log("changeplayer:", this.currentPlayer);
 
 
+
+    },
+
+    selectMenu: function() {
+
+        if(this.gameIsOver) {
+            this.gameIsOver = false;
+        }
+
+        var self = this;
+        $('.select-menu').html('<a href="#" role="button" id="X"><div class="col-md-6 btn-menu"><h1>Choose X</h1></div></a><a href="#" role="button" id="O"><div class="col-md-6 btn-menu"><h1>Choose O</h1></div></a>');
+
+
+        $('#X').click(function () {
+
+            self.setPlayers($(this).attr('id'));
+            self.start();
+            self.gameIsPlaying = true;
+            self.runLoop(ttt);
+            $('.select-menu').css("visibility", "hidden")
+
+            console.log($(this).attr('id'));
+
+        });
+
+        $('#O').click(function () {
+
+            self.setPlayers($(this).attr('id'));
+            self.start();
+            self.gameIsPlaying = true;
+            self.runLoop(ttt);
+            $('.select-menu').css("visibility", "hidden")
+
+            console.log($(this).attr('id'));
+
+        });
+
+    },
+
+    /*not being used*/
+    playAgain: function() {
+
+        var select_menu = $('.select-menu');
+        var self = this;
+
+        select_menu.hide();
+
+        select_menu.html('<a href="#" role="button" id="Play"><div class="col-md-12"><h1>Play Again?</h1></div></a>')
+
+        $('#Play').click(function () {
+
+            self.selectMenu();
+
+        });
+
+    },
+
+    runLoop: function(loop) {
+        //this will take the loop var and just run it
+        loop();
 
     }
 
@@ -154,21 +249,41 @@ Board.prototype = {
 
     drawBoard: function() {
 
-        console.log("thisworks");
 
-        var container = $('<div />');
+        var html = [];
+        //html.push('<div class="col-md-12">')
 
-        for (var i = 0; i < this.number_of_spaces; i++)
-        {
-            $('<div>', {
-                class: 'col-md-4 cell',
-                x: this.board[i].x,
-                y: this.board[i].y,
-                value: this.board[i].value
-            }).appendTo(container);
+        for(var y = 0; y < 3; y++) {
+
+            //html.push('<div class="row center">')
+
+            for(var x = 0; x < 3; x++) {
+                html.push('<div class="col-md-4 cell" x='+x+' y='+y+' value="BLANK"></div>');
+            }
+
+            //html.push('</div>');
         }
 
-        $('.row.tictactoe').html(container);
+        $('.second-container').html(html);
+
+        //console.log("thisworks");
+        //
+        //var container = $('<div />');
+        //
+        //for (var i = 0; i < this.number_of_spaces; i++)
+        //{
+        //    $('<div>', {
+        //        class: 'col-md-4 cell',
+        //        x: this.board[i].x,
+        //        y: this.board[i].y,
+        //        value: this.board[i].value
+        //
+        //    }).appendTo(container);
+        //}
+        //
+        //$('.row.tictactoe').html(container);
+
+
 
 
 
@@ -325,7 +440,9 @@ Board.prototype = {
 
         return $.extend(true, {}, this)
 
-    }
+    },
+
+
 
 
 }
@@ -333,5 +450,5 @@ Board.prototype = {
 
 
 window.game_manager = new GameManager();
-game_manager.start();
+//game_manager.start();
 //
