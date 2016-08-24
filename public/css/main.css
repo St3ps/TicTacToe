@@ -1,19 +1,40 @@
+html {
+  height: 100%; }
+
 body {
-  color: white;
+  height: 100%;
+  color: #eeeeee;
   background-color: #122b40;
-  font-size: 18px; }
+  font-size: 18px;
+  /*this is just so the text in the ttt grid don't highlight when you click their respective cols*/
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+   not supported by any browser */ }
+
+footer {
+  color: darkorange; }
 
 /***MEDIA QUERY**/
 @media screen and (min-width: 300px) and (max-width: 767px) {
   .tictactoe .col-md-4 {
-    width: 50px;
-    height: 50px; }
+    width: 75px;
+    height: 75px; }
 
   .second-container {
-    width: 180px; }
+    width: 255px; }
 
   .select-menu {
-    width: 180px;
+    width: 255px;
     margin-bottom: 25px; } }
 @media (min-width: 1024px) {
   .second-container {
@@ -67,6 +88,16 @@ a:hover {
       border-width: 2px 0px 0px 2px; }
 
 body {
-  padding-top: 100px; }
+  padding-top: 100px;
+  padding-bottom: 30px; }
+
+footer {
+  text-align: center;
+  background-color: #222;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */

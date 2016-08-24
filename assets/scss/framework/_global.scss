@@ -1,7 +1,31 @@
+html {
+
+  height: 100%;
+
+}
+
 body {
 
-  color: white;
+  height: 100%;
+  color: #eeeeee;
   background-color: #122b40;
   font-size:18px;
 
+  /*this is just so the text in the ttt grid don't highlight when you click their respective cols*/
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                not supported by any browser */
+
+
 }
+
+footer {
+
+  color: darkorange;
+
+}
+
