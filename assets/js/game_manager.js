@@ -261,7 +261,7 @@ Board.prototype = {
             //html.push('<div class="row center">')
 
             for(var x = 0; x < 3; x++) {
-                html.push('<div class="col-md-4 cell" x='+x+' y='+y+' value="BLANK"></div>');
+                html.push('<div class="col-md-4 col-xs-4 cell" x='+x+' y='+y+' value="BLANK"></div>');
             }
 
             //html.push('</div>');
