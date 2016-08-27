@@ -69,7 +69,8 @@ GameManager.prototype = {
         this.gameIsPlaying = false;
 
         $('.select-menu').html('<div class="col-md-12"><h1>' + outcome + '</h1></div><div class="col-md-12"><a href="#" role="button" id="Play"><h1>Play Again?</h1></a></div>')
-        $('.select-menu').css("visibility", "visible");
+        //$('.select-menu').css("visibility", "visible");
+        $('.select-menu').slideDown(1000);
 
         $('#Play').click( function (){
 
@@ -146,7 +147,8 @@ GameManager.prototype = {
             self.start();
             self.gameIsPlaying = true;
             self.runLoop(ttt);
-            $('.select-menu').css("visibility", "hidden")
+            $('.select-menu').slideUp(1000);
+            //$('.select-menu').css("visibility", "hidden")
 
             console.log($(this).attr('id'));
 
@@ -158,7 +160,8 @@ GameManager.prototype = {
             self.start();
             self.gameIsPlaying = true;
             self.runLoop(ttt);
-            $('.select-menu').css("visibility", "hidden")
+            $('.select-menu').slideUp(1000);
+            //$('.select-menu').css("visibility", "hidden")
 
             console.log($(this).attr('id'));
 
@@ -440,7 +443,7 @@ Board.prototype = {
 
         return $.extend(true, {}, this)
 
-    },
+    }
 
 
 
@@ -449,6 +452,6 @@ Board.prototype = {
 
 
 
-window.game_manager = new GameManager();
+
 //game_manager.start();
 //
