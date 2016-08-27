@@ -1,67 +1,23 @@
+body {
 
-
-
-/***MEDIA QUERY**/
-
-@media screen and #{$mobile} {
-
-
-  .tictactoe .col-md-4 {
-
-    @include size($cell-size-m);
-
-
-
-  }
-
-
-
-  .second-container {
-
-    width: $cell-size-m * 3 + 30px;
-
-  }
-
-  .select-menu {
-
-    width: $cell-size-m * 3 + 30px;
-    margin-bottom: $select-menu-margin-bottom-m;
-  }
+  padding-top: 100px;
+  padding-bottom: 30px;
 
 }
 
-@media #{$desktop} {
+footer {
 
-
-  .second-container {
-
-    //    width: $cell-size-d * 3 + 30px;
-    width: $cell-size-d * 3 + 30px;
-
-  }
-
-
-
-
-  .tictactoe .col-md-4 {
-
-    @include size($cell-size-d)
-
-  }
-
-
-
-  .select-menu {
-
-    width: $cell-size-d * 3 + 30px;
-    margin-bottom: $select-menu-margin-bottom-d;
-  }
-
+  text-align: center;
+  background-color: #222;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 
 }
 
 
-/*****/
 
 .select-menu {
 
@@ -99,12 +55,13 @@ a {
   margin-right: auto;
 
 
-  .col-md-4 {
+  .col-md-4, .col-xs-4 {
 
     border-style: solid;
     display: flex;
     align-items: center;
     justify-content: center;
+
     float: left;
 
 
@@ -169,22 +126,72 @@ a {
 
 }
 
-body {
+/***MEDIA QUERY**/
 
-  padding-top: 100px;
-  padding-bottom: 30px;
+@media screen and #{$mobile} {
+
+  body {
+
+    padding-top: 50px;
+
+  }
+
+
+  .tictactoe .col-xs-4 {
+
+    @include size($cell-size-m);
+
+  }
+
+
+
+  .second-container {
+
+    width: $cell-size-m * 3 + 30px;
+
+  }
+
+  .select-menu {
+
+    width: $cell-size-m * 3 + 30px;
+    margin-bottom: $select-menu-margin-bottom-m;
+  }
 
 }
 
-footer {
+@media #{$desktop} {
 
-  text-align: center;
-  background-color: #222;
-  height: 30px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+
+
+  .second-container {
+
+    //    width: $cell-size-d * 3 + 30px;
+    width: $cell-size-d * 3 + 30px;
+
+  }
+
+
+
+
+  .tictactoe .col-md-4 {
+
+    @include size($cell-size-d)
+
+  }
+
+
+
+  .select-menu {
+
+    width: $cell-size-d * 3 + 30px;
+    margin-bottom: $select-menu-margin-bottom-d;
+  }
+
 
 }
+
+
+/*****/
+
+
 
