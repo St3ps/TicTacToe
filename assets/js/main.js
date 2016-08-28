@@ -1,5 +1,6 @@
 
 var clicked = false;
+var aiPlayed = false;
 var count = 0;
 
 window.game_manager = new GameManager();
@@ -47,18 +48,18 @@ var ttt = function gameloop() {
 
         }});
 
-    window.setTimeout(function() { var a = 'abc'}, 300);
+
 
     if(!game_manager.gameIsOver) {
         console.log("first if");
         if(!game_manager.currentPlayer.human) {
 
             var m = game_manager.currentPlayer.getAiMove(game_manager.board, game_manager, game_manager.humanPlayer);
+            //var p = game_manager.currentPlayer
 
-            setTimeout(function () {
-            game_manager.board.setVal(m.x, m.y, true, game_manager.aiPlayer);
-            }, 500);
-            if(game_manager.victoryCheck(game_manager.board, game_manager.currentPlayer)) {
+            game_manager.board.setVal(m.x, m.y, true, window.game_manager.aiPlayer);
+
+            if(game_manager.victoryCheck(game_manager.board, game_manager.aiPlayer)) {
                 console.log("GAME OVER, AI WINS")
                 game_manager.endGame("AI Wins!");
             }

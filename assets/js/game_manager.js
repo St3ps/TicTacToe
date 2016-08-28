@@ -336,7 +336,8 @@ Board.prototype = {
     },
 
     setVal: function(x, y, flag, player) {
-        /* parsing the arguments to make sure they get passd as numbers -- the htmlcell vars wont work properly if they're sent as characters */
+        /* parsing the arguments to make sure they get passd as numbers -- the htmlcell vars wont work properly if they're sent as characters
+        * the flag sets wether values go on the grid or not*/
         var x = parseInt(x, 10);
         var y = parseInt(y, 10);
 
@@ -350,6 +351,8 @@ Board.prototype = {
            if(elem.x === x && elem.y === y)
            {
                console.log(elem.x, elem.y)
+
+
                if (elem.value === 'BLANK') {
 
                    elem.value = val;
