@@ -1,6 +1,5 @@
 
 var clicked = false;
-var aiPlayed = false;
 var count = 0;
 
 window.game_manager = new GameManager();
@@ -62,6 +61,10 @@ var ttt = function gameloop() {
             if(game_manager.victoryCheck(game_manager.board, game_manager.aiPlayer)) {
                 console.log("GAME OVER, AI WINS")
                 game_manager.endGame("AI Wins!");
+            } else {
+                
+                console.log('victoryCheck in main.js:', game_manager.victoryCheck(game_manager.board, game_manager.aiPlayer));
+                
             }
 
             game_manager.changePlayer();
@@ -71,12 +74,12 @@ var ttt = function gameloop() {
 
         }
 
-    clicked = false;
+        clicked = false;
 
     }
 
     if(game_manager.gameIsPlaying)
-    requestAnimationFrame(gameloop);
+        requestAnimationFrame(gameloop);
 
 }
 
