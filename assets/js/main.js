@@ -47,20 +47,24 @@ var ttt = function gameloop() {
 
         }});
 
-    window.setTimeout(function() { var a = 'abc'}, 300);
+
 
     if(!game_manager.gameIsOver) {
         console.log("first if");
         if(!game_manager.currentPlayer.human) {
 
             var m = game_manager.currentPlayer.getAiMove(game_manager.board, game_manager, game_manager.humanPlayer);
+            //var p = game_manager.currentPlayer
 
-            setTimeout(function () {
-            game_manager.board.setVal(m.x, m.y, true, game_manager.aiPlayer);
-            }, 500);
-            if(game_manager.victoryCheck(game_manager.board, game_manager.currentPlayer)) {
+            game_manager.board.setVal(m.x, m.y, true, window.game_manager.aiPlayer);
+
+            if(game_manager.victoryCheck(game_manager.board, game_manager.aiPlayer)) {
                 console.log("GAME OVER, AI WINS")
                 game_manager.endGame("AI Wins!");
+            } else {
+                
+                console.log('victoryCheck in main.js:', game_manager.victoryCheck(game_manager.board, game_manager.aiPlayer));
+                
             }
 
             game_manager.changePlayer();
@@ -70,12 +74,12 @@ var ttt = function gameloop() {
 
         }
 
-    clicked = false;
+        clicked = false;
 
     }
 
     if(game_manager.gameIsPlaying)
-    requestAnimationFrame(gameloop);
+        requestAnimationFrame(gameloop);
 
 }
 
