@@ -2,15 +2,20 @@
 var clicked = false;
 var count = 0;
 
+
 window.game_manager = new GameManager();
 game_manager.selectMenu();
 
 
 var ttt = function gameloop() {
 
-    if(game_manager.board.getBlank().length === 0) {
-        console.log("ITS A DRAW!")
-        game_manager.endGame("Draw!");
+    if(game_manager.board.getBlank().length === 0 && !game_manager.gameIsOver ) {
+
+        
+            console.log("ITS A DRAW!");
+            game_manager.endGame("Draw!");
+        
+
     }
 
 
@@ -50,7 +55,7 @@ var ttt = function gameloop() {
 
 
     if(!game_manager.gameIsOver) {
-        console.log("first if");
+        
         if(!game_manager.currentPlayer.human) {
 
             var m = game_manager.currentPlayer.getAiMove(game_manager.board, game_manager, game_manager.humanPlayer);

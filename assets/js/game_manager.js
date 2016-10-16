@@ -111,6 +111,7 @@ GameManager.prototype = {
             })
 
             if(v) {
+                // this.gameIsOver = true;
                 break;
             }
 
@@ -118,6 +119,43 @@ GameManager.prototype = {
             console.log("Value of V:", v);
             return v;
         },
+
+    debug_victoryCheck: function(board, player) {
+
+
+    var cells = board.board;
+    console.log(cells);
+    var victory_conditions =
+        //rows
+        [ [cells[0], cells[1], cells[2]],
+        [cells[3], cells[4], cells[5]],
+        [cells[6], cells[7], cells[8]],
+        //cols
+        [cells[0], cells[3], cells[6]],
+        [cells[1], cells[4], cells[7]],
+        [cells[2], cells[5], cells[8]],
+        //diagonal
+        [cells[0], cells[4], cells[8]],
+        [cells[6], cells[4], cells[2]],
+        ];
+
+    var v;
+    for (var i = 0; i < victory_conditions.length ; i++) {
+
+        v = victory_conditions[i].every(function(elem) {
+
+            return elem.value === player.identity
+        })
+
+        if(v) {
+            // this.gameIsOver = true;
+            break;
+        }
+
+    }
+        console.log("Value of V:", v);
+        return v;
+    },
 
     changePlayer: function () {
 
