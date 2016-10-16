@@ -1,6 +1,6 @@
 
 var clicked = false;
-var count = 0;
+// var count = 0;
 
 
 window.game_manager = new GameManager();
@@ -12,7 +12,7 @@ var ttt = function gameloop() {
     if(game_manager.board.getBlank().length === 0 && !game_manager.gameIsOver ) {
 
         
-            console.log("ITS A DRAW!");
+            // console.log("ITS A DRAW!");
             game_manager.endGame("Draw!");
         
 
@@ -24,7 +24,7 @@ var ttt = function gameloop() {
 
             if(!game_manager.gameIsOver) {
 
-            console.log("TURN:", count);
+            // console.log("TURN:", count);
 
             if (game_manager.currentPlayer.human) {
 
@@ -38,7 +38,7 @@ var ttt = function gameloop() {
 
 
                     if (game_manager.victoryCheck(game_manager.board, game_manager.currentPlayer)) {
-                        console.log("GAME OVER, HUMAN WINS")
+                        // console.log("GAME OVER, HUMAN WINS")
                         game_manager.endGame("You won!");
                     }
 
@@ -64,7 +64,7 @@ var ttt = function gameloop() {
             game_manager.board.setVal(m.x, m.y, true, window.game_manager.aiPlayer);
 
             if(game_manager.victoryCheck(game_manager.board, game_manager.aiPlayer)) {
-                console.log("GAME OVER, AI WINS")
+                // console.log("GAME OVER, AI WINS")
                 game_manager.endGame("AI Wins!");
             } else {
                 

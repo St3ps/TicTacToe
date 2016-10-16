@@ -20,7 +20,7 @@ Player.prototype = {
 
             if(board.board[i].x === x && board.board[i].y === y && board.board[i].value === 'BLANK') {
 
-                console.log("insideMove:", board[i]);
+                // console.log("insideMove:", board[i]);
                 return board.board[i];
             }
         }
@@ -85,9 +85,9 @@ Player.prototype = {
                 var elem = copy.board[i];
                 //console.log("human",i, elem.x, elem.y)
                 var m = humanplayer.move(copy, elem.x, elem.y);
-                console.log("human_m_coords:", m.x, m.y,"boardlength", board.getBlank().length)
+                // console.log("human_m_coords:", m.x, m.y,"boardlength", board.getBlank().length)
                 copy.setVal(m.x, m.y, false, humanplayer);
-                console.log(copy);
+                // console.log(copy);
                 //console.log("human moving", humanplayer.move(copy, elem.x, elem.y));
                 if(gm.victoryCheck(copy, humanplayer)) {
                     //return (elem.x, elem.y);
@@ -104,21 +104,21 @@ Player.prototype = {
 
         var move = this.chooseRandomMoveFromList(board, corners)
         if (move) {
-            console.log("move, corner:", move);
+            // console.log("move, corner:", move);
             return move;
         }
 
         var center = board.board[4];
         if(center === 'BLANK') {
 
-            console.log("move, center:", center);
+            // console.log("move, center:", center);
             return center;
 
         }
 
 
         var sides = [board.board[1], board.board[3], board.board[5], board.board[7]];
-        console.log("move, sides:", sides);
+        // console.log("move, sides:", sides);
         return this.chooseRandomMoveFromList(board, sides);
 
     }
