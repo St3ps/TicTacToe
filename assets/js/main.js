@@ -73,7 +73,7 @@ var ttt = function gameloop() {
             }
 
             game_manager.changePlayer();
-            count++;
+            // count++;
 
 
 
